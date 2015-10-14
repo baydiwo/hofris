@@ -1,13 +1,14 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:400,300,700);
 @import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700);
+
 @import "build/lesshat.less";
+@import "nivo-slider.css";
+@import "nivo-default/default.css";
 
 @green : #2a7c3e;
 @light-green: #7cb041;
 @dark-green: #184723;
 @blue: #019b9d;
-
-@import "flexslider.less";
 
 body {
     //font-family: 'Roboto Condensed', sans-serif;
@@ -25,8 +26,18 @@ h2 {
     margin-top: 10px;
 }
 
+a {
+    //.transition(box-shadow 0.2s linear, color .4s .2s ease);
+    .transition(all 0.3s linear);
+    &:hover {
+        text-decoration: none;
+        color: @dark-green;
+    }
+}
+
 header {
     color: white;
+    margin-bottom: 20px;
 
     .login-wrapper {
         background: @light-green;
@@ -58,19 +69,25 @@ header {
     }
 
     .nav {
-        margin-top: 60px;
+        margin-top: 70px;
 
         li {
+            margin: 0px 10px;
             a {
                 color: black;
                 font-size: 16px;
-                .transition(all .5s ease);
+                .transition(all .2s ease);
                 text-transform: uppercase;
+                border-radius: 0;
+                padding: 0px 5px;
+
+                img {vertical-align: top;}
 
                 &:hover , &:focus {
                     background: none;
                     text-decoration: none;
                     color: @green;
+                    border-bottom:2px solid @green;
                 }
             }
         }
@@ -80,33 +97,56 @@ header {
 
 article {
 
-    .flexslider {
-        height: 470px;
-        //overflow: hidden;
-        margin-bottom: 20px;
+    .slider-wrapper {
         position: relative;
-    }
-    .flex-caption {
-        width: 96%;
-        padding: 2%;
-        left: 0;
-        bottom: 40px;
-        background: rgba(0,0,0,.5);
-        color: #fff;
-        text-shadow: 0 -1px 0 rgba(0,0,0,.3);
-        font-size: 14px;
-        line-height: 18px;
+        margin-bottom: 20px;
+
+        .nivo-controlNav {
+            position: absolute;
+            bottom: 20px;
+            z-index: 8;
+            width: 100%;
+            padding: 0;
+        }
+
+        .nivo-caption {
+            position: relative;
+            padding-bottom: 50px;
+
+            a {
+                &:hover {
+                    color: darken(@blue , 50% );
+                }
+
+            }
+            h3 {margin-top: 10px;}
+        }
     }
 
     .boxes {
-        height: 470px;
-        overflow: hidden;
+        height: 500px;
+        overflow: visible;
         margin-bottom: 20px;
+
+        a{
+            display: inline-block;
+
+            &:hover {
+                .box-shadow(2px 3px 7px #d4d2d2);
+
+                > .details {
+                    color: darken(#fff, 80%);
+                }
+            }
+        }
 
         .graph {
             float: left;
 
-            img {height: 318px;}
+            img {
+                height: auto;
+                max-height: 332px;
+            }
         }
 
         .details {
@@ -115,7 +155,9 @@ article {
             text-align: center;
             color: white;
             width: 100%;
-            height: 150px;
+            height: 170px;
+            padding: 0 20px;
+            .transition(all 0.3s ease-in-out);
 
             h2 {
                 margin-top: 0;
