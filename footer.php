@@ -39,3 +39,12 @@
         </div>
     </div>
 </footer>
+
+        <!-- jQuery -->
+        <script src="//code.jquery.com/jquery.js"></script>
+        <!-- Bootstrap JavaScript -->
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/jquery.nivo.slider.pack.js" type="text/javascript"></script>
+        <script src="js/script.js"></script>
+    </body>
+</html>

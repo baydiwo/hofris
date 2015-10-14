@@ -10,7 +10,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="boxes">
-                                        <a href="">
+                                        <a href="article.php">
                                             <div class="graph">
                                                 <img src="img/dummy.jpg" alt="" class="img-responsive">
                                             </div>
@@ -24,7 +24,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="boxes">
-                                        <a href="">
+                                        <a href="article.php">
                                             <div class="graph">
                                                 <img src="img/dummy.jpg" alt="" class="img-responsive">
                                             </div>
@@ -38,7 +38,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="boxes">
-                                        <a href="">
+                                        <a href="article.php">
                                             <div class="graph">
                                                 <img src="img/dummy.jpg" alt="" class="img-responsive">
                                             </div>
@@ -52,7 +52,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="boxes">
-                                        <a href="">
+                                        <a href="article.php">
                                             <div class="graph">
                                                 <img src="img/dummy.jpg" alt="" class="img-responsive">
                                             </div>
@@ -66,7 +66,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="boxes">
-                                        <a href="">
+                                        <a href="article.php">
                                             <div class="graph">
                                                 <img src="img/dummy.jpg" alt="" class="img-responsive">
                                             </div>
@@ -80,7 +80,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="boxes">
-                                        <a href="">
+                                        <a href="article.php">
                                             <div class="graph">
                                                 <img src="img/dummy.jpg" alt="" class="img-responsive">
                                             </div>
@@ -99,7 +99,7 @@
                     <div class="col-md-4">
                         <div class="box-sidebar">
                             <div class="boxes">
-                                <a href="">
+                                <a href="article.php">
                                     <div class="graph">
                                         <img src="img/dummy.jpg" alt="" class="img-responsive">
                                     </div>
@@ -111,7 +111,7 @@
                                 </a>
                             </div>
                             <div class="boxes">
-                                <a href="">
+                                <a href="article.php">
                                     <div class="graph">
                                         <img src="img/dummy.jpg" alt="" class="img-responsive">
                                     </div>
@@ -123,7 +123,7 @@
                                 </a>
                             </div>
                             <div class="boxes">
-                                <a href="">
+                                <a href="article.php">
                                     <div class="graph">
                                         <img src="img/dummy.jpg" alt="" class="img-responsive">
                                     </div>
@@ -144,12 +144,3 @@
         </article>
 
         <?php include "footer.php"; ?>
-
-        <!-- jQuery -->
-        <script src="//code.jquery.com/jquery.js"></script>
-        <!-- Bootstrap JavaScript -->
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/jquery.nivo.slider.pack.js" type="text/javascript"></script>
-        <script src="js/script.js"></script>
-    </body>
-</html>
