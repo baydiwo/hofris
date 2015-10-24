@@ -49,9 +49,9 @@
 </footer>
 
         <!-- jQuery -->
-        <!--<script src="//code.jquery.com/jquery.js"></script> -->
+        <script src="//code.jquery.com/jquery.js"></script>
         <!-- Bootstrap JavaScript -->
-        <script src="<?php echo get_template_directory_uri(); ?>/js/jquery.js"></script>
+        <!-- <script src="<?php echo get_template_directory_uri(); ?>/js/jquery.js"></script> -->
         <script src="<?php echo get_template_directory_uri(); ?>/js/bootstrap.min.js"></script>
         <script src="<?php echo get_template_directory_uri(); ?>/js/jquery.nivo.slider.pack.js" type="text/javascript"></script>
         <script src="<?php echo get_template_directory_uri(); ?>/js/script.js"></script>
