@@ -1,0 +1,481 @@
+/*
+Theme Name: hofris
+Theme URI: http://underscores.me/
+Author: Underscores.me
+Author URI: http://underscores.me/
+Description: Description
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: hofris
+Tags:
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+hofris is based on Underscores http://underscores.me/, (C) 2012-2015 Automattic, Inc.
+Underscores is distributed under the terms of the GNU GPL v2 or later.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
+*/
+
+@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:400,300,700);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700);
+
+@import "css/build/lesshat.less";
+@import "css/nivo-slider.css";
+@import "css/nivo-default/default.css";
+
+@green : #2a7c3e;
+@light-green: #7cb041;
+@dark-green: #184723;
+@blue: #019b9d;
+@roboto : 'Roboto Condensed', sans-serif;
+@open-sans: 'Open Sans Condensed', sans-serif;
+body {
+    //font-family: 'Roboto Condensed', sans-serif;
+    font-family: @open-sans;
+}
+
+h1 , h2 , h3 , h4 {
+    text-transform: uppercase;
+}
+
+h3 {
+    font-size: 18px;
+}
+h2 {
+    margin-top: 10px;
+}
+
+a {
+    //.transition(box-shadow 0.2s linear, color .4s .2s ease);
+    .transition(all 0.3s linear);
+    &:hover {
+        text-decoration: none;
+        color: @dark-green;
+    }
+}
+
+p {
+    color: black;
+    font-family: @roboto;
+    font-size: 16px;
+}
+
+header {
+    color: white;
+    margin-bottom: 20px;
+
+    .login-wrapper {
+        background: @light-green;
+        margin-bottom: 20px;
+
+        ul.list-inline {
+            height: 40px;
+            margin: 0;
+            padding: 0;
+
+            > li {
+                margin: 0;
+                padding: 0;
+                position: relative;
+
+                > a {
+                    padding: 10px;
+                    float: left;
+                    color: white;
+                    background: @green;
+                }
+                &:first-child{
+                    a {
+                        background: @dark-green;
+                    }
+                }
+            }
+        }
+
+
+    }
+
+    .nav {
+        margin-top: 70px;
+
+        li {
+            margin: 0px 10px;
+            a {
+                color: black;
+                font-size: 16px;
+                .transition(all .2s ease);
+                text-transform: uppercase;
+                border-radius: 0;
+                padding: 0px 5px;
+
+                img {vertical-align: top;}
+
+                &:hover , &:focus {
+                    background: none;
+                    text-decoration: none;
+                    color: @green;
+                    border-bottom:2px solid @green;
+                }
+            }
+        }
+
+    }
+
+    .ajax-login-register-login-container {
+        display: none;
+        position: absolute;
+        right: 0;
+        top: 40px;
+        background: @light-green;
+        padding: 10px;
+        z-index: 9;
+        width: 200px;
+        .box-shadow(2px 3px 7px #d4d2d2);
+
+        .zm_alr_label {
+            font-weight: normal;
+        }
+
+        .zm_alr_form_field {
+            outline: 0;
+            border:none;
+            color: @dark-green;
+            padding: 6px 12px;
+            height: 34px;
+            width: 100%;
+            // max-width: 400px;
+        }
+
+        .zm_alr_checkbox_field {
+            width: 10px;
+            height: 10px;
+            margin-right: 10px;
+            outline: 0;
+            border:1px solid @dark-green;
+        }
+
+        .login_button {
+            background: @dark-green;
+            width: 100%;
+            color: white;
+        }
+
+        .zm_alr_ul_container {
+            > li {
+                list-style-type: disc;
+
+                > a {
+                    background: none !important;
+                    color: white;
+                }
+            }
+        }
+    }
+}
+
+footer {
+    background: @green;
+    position: relative;
+    color: white;
+    font-size: 16px;
+    text-transform: uppercase;
+    padding-top: 110px;
+    margin-top: 100px;
+
+    &::before {
+        background: @light-green;
+        height: 43px;
+        width: 100%;
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+
+    .goingup {
+        position: absolute;
+        left: 50%;
+        top: -46px;
+        margin-left: -91px/2;
+        cursor: pointer;
+    }
+
+    .sitemap {
+
+        a {
+            color: white;
+            font-size: 16px;
+            text-transform: uppercase;
+        }
+    }
+
+    .subscribe {
+        .form-control {
+            .border-radius(0px);
+        }
+        .btn.subscribe {
+            background: @light-green;
+            font-size: 16px;
+            margin-left: 5px;
+            .border-radius(0px);
+            padding-left:30px;
+            padding-right:30px;
+        }
+    }
+
+    .copyright {
+        text-align: center;
+        position: relative;
+        z-index: 1;
+        margin-top: 60px;
+
+        p {
+            color: white;
+        }
+    }
+}
+
+article {
+
+    .slider-wrapper {
+        position: relative;
+        margin-bottom: 20px;
+
+        .nivo-controlNav {
+            position: absolute;
+            bottom: 5px;
+            z-index: 8;
+            width: 100%;
+            padding: 0;
+
+            a {
+                .transition(none);
+            }
+        }
+
+        .nivo-caption {
+            position: relative;
+            padding-bottom: 29px;
+
+            a {
+                &:hover {
+                    color: darken(@blue , 50% );
+                }
+
+            }
+
+            h3 {margin-top: 10px;}
+            p {
+                color: white;
+                font-family: @open-sans;
+            }
+        }
+    }
+
+    .boxes {
+        height: 500px;
+        overflow: visible;
+        margin-bottom: 20px;
+        .transition(all 0.3s ease-in-out);
+
+        &:hover {
+            .box-shadow(2px 3px 7px #d4d2d2);
+
+            > .details {
+                color: darken(#fff, 80%);
+            }
+        }
+
+        a{
+            display: block;
+        }
+
+        .graph {
+            float: left;
+
+            img {
+                height: auto;
+                max-height: 332px;
+            }
+        }
+
+        .details {
+            float: left;
+            background: @green;
+            text-align: center;
+            color: white;
+            width: 100%;
+            height: 170px;
+            padding: 0 20px;
+
+            .list-inline {
+                margin: 0;
+            }
+
+            a , a h2 , a p {
+                color: white;
+                .transition(all 0.3s ease-in-out);
+
+                &:hover {
+                    color: @dark-green;
+                }
+            }
+
+            h2 {
+                margin-top: 0;
+                color: white;
+                line-height: 0.9em;
+            }
+            h3 a, p {
+                font-size: 16px;
+                color: white;
+            }
+            p {
+                margin-bottom: 20px;
+                color: white;
+                font-family: @open-sans;
+            }
+
+        }
+    }
+
+    .home-boxes {
+        .details {
+            background: @light-green;
+        }
+    }
+
+    .breadcrumb {
+        background: @light-green;
+        .border-radius(0px);
+        color: white;
+
+        a {
+            color: white;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        > .active {
+            color: white;
+        }
+    }
+
+    &.category {
+
+        ul {
+            li {
+                padding: 10px 0px;
+
+                &:nth-child(even) {
+                    background: #f9f9f9;
+                }
+            }
+        }
+
+        .description {
+            // padding-top: 20px;
+
+            .cat-title , h2 {
+                color: @green;
+                font-weight: bold;
+                text-transform: uppercase;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        .page-nav {
+            text-align: center;
+
+            .pagination {
+                > li {
+                    > a {
+                        color: @green;
+                        border-color: @light-green;
+
+                        &:hover , &:focus {
+                            background: lighten(@light-green,30%);
+                        }
+                    }
+                }
+                .active {
+                    a {
+                        background-color: @light-green;
+                        border-color: @green;
+
+                    }
+                }
+            }
+        }
+    }//category
+
+    &.content {
+
+        .cat-title , h1 {
+            color: @green;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        aside , main {
+            margin-top: 20px;
+        }
+
+        aside {
+            font-weight: bold;
+            font-family: @roboto;
+            font-size: 16px;
+        }
+    }
+
+    .register-page {
+        display: block;
+        background: none;
+
+        .fb-login-logo {
+            background: url(img/fb_login_button.png) no-repeat center center;
+            width: 202px;
+            height: 40px;
+            display: block;
+        }
+
+        .zm_alr_form_field_container {
+            margin: 10px 0;
+        }
+
+        .zm_alr_label {
+            width: 100%;
+        }
+
+        .zm_alr_form_field {
+            &:extend(header .ajax-login-register-login-container .zm_alr_form_field);
+            border:1px solid @dark-green;
+        }
+
+        .login_button {
+            &:extend(header .ajax-login-register-login-container .login_button);
+        }
+
+        .zm_alr_ul_container {
+            list-style-type: none;
+            padding: 0;
+
+            li {
+                a {font-weight: bold;}
+            }
+        }
+    }
+}
+
+#ajax-login-register-login-dialog {
+    display: none;
+}
