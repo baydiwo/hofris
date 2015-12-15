@@ -244,10 +244,12 @@ article {
     .slider-wrapper {
         position: relative;
         margin-bottom: 20px;
+        height: 100%;
+        max-height: 462px;
 
         .nivo-controlNav {
             position: absolute;
-            bottom: 5px;
+            bottom: 3%;
             z-index: 8;
             width: 100%;
             padding: 0;
@@ -258,8 +260,10 @@ article {
         }
 
         .nivo-caption {
-            position: relative;
-            padding-bottom: 29px;
+            position: absolute;
+            padding-top: 10px;
+            height: 100%;
+            max-height: 130px;
 
             a {
                 &:hover {
@@ -277,7 +281,8 @@ article {
     }
 
     .boxes {
-        height: 500px;
+        // height: 500px;
+        height: 462px;
         overflow: visible;
         margin-bottom: 20px;
         .transition(all 0.3s ease-in-out);
@@ -309,7 +314,8 @@ article {
             text-align: center;
             color: white;
             width: 100%;
-            height: 170px;
+            // height: 170px;
+            height:130px;
             padding: 0 20px;
 
             .list-inline {
@@ -441,6 +447,94 @@ article {
         display: block;
         background: none;
 
+        .form-group {
+            margin-bottom: 10px;
+            float: left;
+            width: 100%;
+        }
+
+        .option-field , .simplr-field , .login-username , .login-password {
+            margin-bottom: 10px;
+            float: left;
+            width: 100%;
+
+            label {
+                color: @dark-green;
+                width: 27%;
+                font-size: 18px;
+                font-weight: 400;
+                font-family: @roboto;
+                float: left;
+                text-align: left;
+            }
+
+            input {
+                width: 73%;
+                height: 40px;
+                padding: 0 10px;
+                border:1px solid @dark-green;
+                font-size: 18px;
+                color: black;
+                float: left;
+            }
+
+            &.date {
+                .simplr-clr {display: none;}
+
+                select {
+                    &:extend(article .register-page .option-field input);
+                    width: 23%;
+
+                    &#tanggal_lahir-mo , &#tanggal_lahir-dy {margin-right: 11px;}
+                }
+            }
+
+            &.select {
+                select {
+                    &:extend(article .register-page .option-field input);
+                }
+            }
+
+            &.textarea  {
+                textarea {
+                    &:extend(article .register-page .option-field input);
+                    height: 100px;
+                }
+            }
+        }
+
+        .wpcf7-form-control-wrap {
+
+            select , input {
+                &:extend(article .register-page .option-field input);
+            }
+        }
+
+        .login-remember , .form-group {
+
+            label {
+                &:extend(article .register-page .option-field label);
+            }
+
+            .form-control {
+                &:extend(article .register-page .option-field input);
+            }
+        }
+
+        .submit , .login-submit .button-primary{
+            &:extend(header .ajax-login-register-login-container .login_button);
+            border: none;
+            font-size: 24px;
+            padding: 8px;
+        }
+
+        .simplr-message.error {
+            padding: 15px;
+            background-color: #fcf8e3;
+            display: block;
+            margin:0 0 10px;
+        }
+
         .fb-login-logo {
             background: url(img/fb_login_button.png) no-repeat center center;
             width: 202px;
@@ -448,34 +542,62 @@ article {
             display: block;
         }
 
-        .zm_alr_form_field_container {
-            margin: 10px 0;
-        }
-
-        .zm_alr_label {
+        .textfull {
             width: 100%;
         }
+    }//register page
 
-        .zm_alr_form_field {
-            &:extend(header .ajax-login-register-login-container .zm_alr_form_field);
-            border:1px solid @dark-green;
+    .wpcf7-response-output {
+        background: @green;
+        padding: 10px 20px;
+        color: #fff;
+        font-size: 16px;
+        font-family: @roboto;
+        .transition(all ease .5s);
+
+        &.wpcf7-display-none {
+            display: none;
         }
 
-        .login_button {
-            &:extend(header .ajax-login-register-login-container .login_button);
+        &.wpcf7-mail-sent-ok {
+            display: block;
         }
 
-        .zm_alr_ul_container {
-            list-style-type: none;
-            padding: 0;
-
-            li {
-                a {font-weight: bold;}
-            }
-        }
     }
-}
+    .screen-reader-response {
+        display: none;
+    }
+}//article
 
 #ajax-login-register-login-dialog {
     display: none;
 }
+
+.over-wrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    scroll:none;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255,255,255,0.8);
+    z-index: 9999;
+
+    .warning {
+        background: #fff;
+        border:1px solid @dark-green;
+        text-align: center;
+        position: relative;
+        height: 170px;
+        .transform(translateY(50%));
+        margin-top: 170px/2;
+
+        h2 {
+            color: @green; font-family: @open-sans;
+        }
+
+        h4 {font-family: @open-sans;}
+    }
+}
+
+

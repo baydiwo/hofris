@@ -16,18 +16,18 @@
             <a id="upup" class="upup"><img src="<?php echo get_template_directory_uri(); ?>/img/upup.jpg" height="93" width="91" alt=""></a>
         </div>
         <div class="row">
-            <div class="col-lg-4">
+            <div class="col-lg-4 col-xs-6">
                 <div class="sitemap">
                     <?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'main-menu' , 'menu_class' => ' ', 'items_wrap'      => '<ul class="list-unstyled" id="%1$s" class="%2$s">%3$s</ul>', ) ); ?>
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-4 col-xs-6">
                 <div class="connect">
                     connect with hofris <br>
                     <img src="<?php echo get_template_directory_uri(); ?>/img/shares.jpg" height="40" width="94" alt="">
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-4 col-xs-12">
                 <div class="subscribe">
                     join our hofris email newsletter <br>
                     <!-- <div class="input-group">
@@ -39,7 +39,7 @@
                     <?php echo do_shortcode('[contact-form-7 id="57" title="Subscribe"]'); ?>
                 </div>
             </div>
-            <div class="col-lg-12">
+            <div class="col-lg-12 col-xs-12">
                 <div class="copyright">
                     <p>copyright 2015 &copy; hofris</p>
                 </div>

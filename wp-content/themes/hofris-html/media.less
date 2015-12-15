@@ -1,0 +1,44 @@
+@screen-xs-max : 568px;
+@screen-sm-min : 568px;
+@screen-sm-max : 1024px;
+@screen-md-min : 1024px;
+@screen-md-max : 1200px;
+@screen-lg-min : 1200px;
+
+@imp : !important;
+// custom variables
+@media (max-width: @screen-xs-max) {
+
+    h1 {font-size: 26px;}
+    h2 { font-size: 24px;}
+    h3 { font-size: 16px;}
+    body , p , footer {font-size: 12px;}
+
+    article {
+        .boxes {
+            height: 312px;
+        }
+    }//article
+
+    footer {
+        .sitemap {
+            a {font-size: 12px;}
+        }
+    }
+
+}
+
+@media only screen and (max-width: 767px){
+
+}//tablet
+
+
+//ipad and tablet
+@media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+
+
+
+}
+@media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+
+}

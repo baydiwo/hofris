@@ -39,7 +39,7 @@ $querybox = new WP_Query( $args );
 if ( $querybox->have_posts() ) {
     while ( $querybox->have_posts() ) {
         $querybox->the_post(); ?>
-                                <div class="col-md-6">
+                                <div class="col-md-6 col-sm-6 col-xs-6">
                                     <div class="boxes">
                                         <a href="<?php the_permalink(); ?>">
                                             <div class="graph">
@@ -55,7 +55,7 @@ if ( $querybox->have_posts() ) {
                                             <ul class="list-unstyled list-inline"><?php the_category_hook(' '); ?></ul>
                                             <a href="<?php the_permalink(); ?>">
                                             <h2><?php echo wp_trim_words( get_the_title(), 7, '' ); ?></h2>
-                                                <p><?php echo wp_trim_words( get_the_content(), 10, '' ); ?></p>
+                                                <!-- <p><?php echo wp_trim_words( get_the_content(), 10, '' ); ?></p> -->
                                             </a>
                                         </div>
                                     </div>

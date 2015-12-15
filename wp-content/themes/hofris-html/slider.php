@@ -17,7 +17,7 @@ if ( $query->have_posts() ) {
             $image3 = get_field('image_3');
             $image4 = get_field('image_4');
             $image5 = get_field('image_5');
-            $cat = get_field('category');
+            $cat1 = get_field('category');
             $cat2 = get_field('category_2');
             $cat3 = get_field('category_3');
             $cat4 = get_field('category_4');
@@ -29,11 +29,11 @@ if ( $query->have_posts() ) {
         ?>
         <?php if ($image != null) { ?>
         <a href="<?php the_field('link'); ?>"><img src="<?php the_field('image') ?>" alt="<?php the_field('title'); ?>"
-            <?php if (get_field('title_1') != null) {?>
+            <?php if (get_field('title') != null) {?>
             title="
-            <a href='<?php the_field('link'); ?>'><h3><?php echo get_cat_name( $cat ) ?></h3>
+            <a href='<?php the_field('link'); ?>'><h3><?php echo get_cat_name( $cat1 ) ?></h3>
             <h2><?php the_field('title') ?></h2>
-            <p><?php the_field('text') ?> ...</p></a>" />
+            </a>" />
             <?php } ?>
         </a>
         <?php } ?>
@@ -43,7 +43,7 @@ if ( $query->have_posts() ) {
             title="
             <a href='<?php the_field('link_2'); ?>'><h3><?php echo get_cat_name( $cat2 ); ?></h3>
             <h2><?php the_field('title_2') ?></h2>
-            <p><?php the_field('text_2') ?> ...</p></a>" />
+            </a>" />
             <?php } ?>
         </a>
         <?php } ?>
@@ -53,7 +53,7 @@ if ( $query->have_posts() ) {
             title="
             <a href='<?php the_field('link_3'); ?>'><h3><?php echo get_cat_name( $cat3 ); ?></h3>
             <h2><?php the_field('title_3') ?></h2>
-            <p><?php the_field('text_3') ?> ...</p></a>" />
+            </a>" />
             <?php } ?>
         </a>
         <?php } ?>
@@ -63,7 +63,7 @@ if ( $query->have_posts() ) {
             title="
             <a href='<?php the_field('link_4'); ?>'><h3><?php echo get_cat_name( $cat4 ); ?></h3>
             <h2><?php the_field('title_4') ?></h2>
-            <p><?php the_field('text_4') ?> ...</p></a>" />
+            </a>" />
             <?php } ?>
         </a>
         <?php } ?>
@@ -73,7 +73,7 @@ if ( $query->have_posts() ) {
             title="
             <a href='<?php the_field('link_5'); ?>'><h3><?php echo get_cat_name( $cat5 ); ?></h3>
             <h2><?php the_field('title_5') ?></h2>
-            <p><?php the_field('text_5') ?> ...</p></a>" />
+            </a>" />
             <?php } ?>
         </a>
         <?php } ?>

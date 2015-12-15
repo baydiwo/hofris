@@ -1,3 +1,5 @@
+// script.js
+// First we trigger the form submit event
 $(window).load(function() {
     $('#slider').nivoSlider({
         effect: 'sliceDown',
@@ -18,6 +20,7 @@ $(window).load(function() {
         var body = $("html, body");
         body.stop().animate({scrollTop:0}, 'slow', 'swing');
     })
+
 });
 
 function hideUncategorized() {

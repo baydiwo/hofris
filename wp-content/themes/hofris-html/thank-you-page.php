@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying all pages.
+ * Template Name: Thank you template
  *
  * This is the template that displays all pages by default.
  * Please note that this is the WordPress construct of pages
@@ -11,15 +11,6 @@
  *
  * @package hofris
  */
-
-// if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-//     echo "
-//     <script>
-//     alert('ping');
-//     </script>
-//     ";
-// }
-
 get_header(); ?>
 
 	<article class="content">
@@ -29,14 +20,7 @@ get_header(); ?>
 				<?php while ( have_posts() ) : the_post(); ?>
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1><?php the_title(); ?></h1>
-                    </div>
-                    <div class="col-lg-12">
-                    	<div class="row register-page">
-                    		<div class="col-md-6">
-                    			<?php the_content(); ?>
-                    		</div>
-                    	</div>
+                    	<?php the_content(); ?>
                     </div>
                 </div>
 

@@ -11,14 +11,15 @@
  *
  * @package hofris
  */
+?>
+<?php
 
-// if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-//     echo "
-//     <script>
-//     alert('ping');
-//     </script>
-//     ";
-// }
+if ( is_user_logged_in() ) {
+
+    $profile_page = get_page_link( 93 );
+    wp_redirect( "$profile_page" ); exit;
+
+}
 
 get_header(); ?>
 
@@ -28,13 +29,14 @@ get_header(); ?>
 
 				<?php while ( have_posts() ) : the_post(); ?>
                 <div class="row">
-                    <div class="col-lg-12">
-                        <h1><?php the_title(); ?></h1>
+                    <div class="col-md-6 col-md-offset-3">
+                        <h1 align="center"><?php the_title(); ?></h1>
                     </div>
                     <div class="col-lg-12">
                     	<div class="row register-page">
-                    		<div class="col-md-6">
+                    		<div class="col-md-6 col-md-offset-3">
                     			<?php the_content(); ?>
+
                     		</div>
                     	</div>
                     </div>
