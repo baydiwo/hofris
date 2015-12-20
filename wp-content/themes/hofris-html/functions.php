@@ -342,3 +342,11 @@ function pu_blank_login( $user ){
 
     }
 }
+
+// remove admin bar except administrator
+add_action('after_setup_theme', 'remove_admin_bar');
+function remove_admin_bar() {
+if (!current_user_can('administrator') && !is_admin()) {
+  show_admin_bar(false);
+}
+}
