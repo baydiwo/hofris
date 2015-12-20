@@ -24,8 +24,11 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 @import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700);
 
 @import "css/build/lesshat.less";
+@import "css/bootstrap.min.css";
 @import "css/nivo-slider.css";
 @import "css/nivo-default/default.css";
+@import "css/colorbox.css";
+@import "css/jquery.sidr.light.css";
 
 @green : #2a7c3e;
 @light-green: #7cb041;
@@ -64,6 +67,10 @@ p {
     font-size: 16px;
 }
 
+.no-padding {
+    padding: 0;
+}
+
 header {
     color: white;
     margin-bottom: 20px;
@@ -99,30 +106,110 @@ header {
 
     }
 
-    .nav {
+    #main-nav #primary-nav {
         margin-top: 70px;
+        // float: right;
 
-        li {
-            margin: 0px 10px;
+        ul {
+            list-style: none;
+            position: relative;
+            float: left;
+            margin: 0;
+            padding: 0;
+
             a {
-                color: black;
+                display: block;
+                .transition(all 0.2s ease);
                 font-size: 16px;
-                .transition(all .2s ease);
-                text-transform: uppercase;
-                border-radius: 0;
                 padding: 0px 5px;
+                color: black;
+                text-transform: uppercase;
+                text-decoration: none;
 
                 img {vertical-align: top;}
+            }
 
-                &:hover , &:focus {
-                    background: none;
-                    text-decoration: none;
-                    color: @green;
-                    border-bottom:2px solid @green;
+            li {
+                position: relative;
+                float: left;
+                margin: 0 10px;
+                padding: 0;
+                .transition(all 0.5s ease);
+
+                a {
+                    border-bottom:2px solid white;
+
+                    &:hover , &:focus {
+                        background: none;
+                        text-decoration: none;
+                        color: @green;
+                        border-bottom:2px solid @green;
+                    }
+                }
+
+                &.active , &.current-menu-item {
+                    a {
+                        color: @dark-green;
+                    }
+                }
+
+                &:hover {
+                    > ul {
+                        display: block;
+                    }
+
                 }
             }
-        }
 
+            ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background: none;
+                padding: 0;
+                z-index: 9999;
+
+                li {
+                    float: none;
+                    width: 200px;
+                    margin: 0;
+                    background: white;
+                    .box-shadow(2px 3px 7px #d4d2d2);
+
+                    &:hover {
+
+                    }
+                }
+
+                a {
+                    line-height: 120%;
+                    padding: 10px 15px;
+                    border-bottom:2px solid white;
+
+                    &:hover {
+                        color: @dark-green;
+                        border-bottom:2px solid @green;
+                    }
+                }
+            }//ul
+        }//ul
+    }//main nav
+
+    #mobile-header {
+        display: none;
+        visibility: hidden;
+
+        i {
+            font-size:28px;
+            color: @dark-green;
+            cursor: pointer;
+        }
+    }
+    @media only screen and (max-width: 767px){
+        #mobile-header {
+            display: block;
+        }
     }
 
     .ajax-login-register-login-container {
@@ -217,13 +304,19 @@ footer {
         .form-control {
             .border-radius(0px);
         }
+        .form-group {margin-bottom: 0;}
+        .input-group-btn {display: block; width: 100%;}
         .btn.subscribe {
             background: @light-green;
             font-size: 16px;
-            margin-left: 5px;
             .border-radius(0px);
-            padding-left:30px;
-            padding-right:30px;
+            margin-left: 3%;
+            margin-top: -1px;
+            width: 97%;
+        }
+
+        .response {
+            div {margin: 0 10px 0 0; width: 100%;}
         }
     }
 
@@ -237,9 +330,36 @@ footer {
             color: white;
         }
     }
+
+    .connect {
+        a {
+            color: white;
+
+            i {
+                font-size: 36px;
+                .transition(all ease .2s);
+            }
+
+            &:hover {
+                i {color: @light-green;}
+            }
+        }
+    }
+
+    .footer-menu {
+        li {
+            display: inline-block;
+            width: 49%;
+        }
+        ul.sub-menu {
+            display: none;
+        }
+    }
 }
 
 article {
+
+    .attachment-img-responsive {max-width: 100%; height: auto;}
 
     .slider-wrapper {
         position: relative;
@@ -355,6 +475,12 @@ article {
         }
     }
 
+    .box-sidebar {
+        .details {
+            h2 {line-height: 120px;}
+        }
+    }
+
     .breadcrumb {
         background: @light-green;
         .border-radius(0px);
@@ -443,6 +569,8 @@ article {
         }
     }
 
+    .wpcf7-recaptcha {margin-bottom: 10px;}
+
     .register-page {
         display: block;
         background: none;
@@ -460,22 +588,26 @@ article {
 
             label {
                 color: @dark-green;
-                width: 27%;
+                width: 25%;
                 font-size: 18px;
                 font-weight: 400;
                 font-family: @roboto;
                 float: left;
                 text-align: left;
+                font-style: normal;
             }
 
             input {
-                width: 73%;
-                height: 40px;
-                padding: 0 10px;
-                border:1px solid @dark-green;
-                font-size: 18px;
-                color: black;
-                float: left;
+                width: 73% !important;
+                height: 40px !important;
+                padding: 0 10px !important;
+                border:1px solid @dark-green !important;
+                font-size: 18px !important;
+                color: black !important;
+                float: left !important;
+                clear:none !important;
+                .border-radius(0) !important;
+                .box-shadow(0 0 0 0) !important;
             }
 
             &.date {
@@ -483,9 +615,9 @@ article {
 
                 select {
                     &:extend(article .register-page .option-field input);
-                    width: 23%;
+                    width: 22.2% !important;
 
-                    &#tanggal_lahir-mo , &#tanggal_lahir-dy {margin-right: 11px;}
+                    &#tanggal_lahir-mo , &#tanggal_lahir-dy {margin-right: 18px;}
                 }
             }
 
@@ -522,10 +654,23 @@ article {
         }
 
         .submit , .login-submit .button-primary{
-            &:extend(header .ajax-login-register-login-container .login_button);
+            &:extend(article .register-page .option-field input);
             border: none;
             font-size: 24px;
             padding: 8px;
+            background: #184723;
+            color: white !important;
+        }
+
+        input.submit.button {
+            border: none;
+            font-size: 24px;
+            padding: 0 8px;
+            background: #184723;
+            width: 100% !important;
+            color: #fff;
+            .border-radius(0 0 0 0);
+            .box-shadow(0 0 0);
         }
 
         .simplr-message.error {
@@ -545,14 +690,38 @@ article {
         .textfull {
             width: 100%;
         }
+
+        #recaptcha_widget_div {float: left;margin: 10px 0;}
     }//register page
 
+    .edit-profile-page {
+        .option-field.date {
+            width: 73%;
+
+            select {
+                width: 30.2% !important;
+            }
+        }
+    }
+
+    .video-page {
+        // h2 {margin-bottom: 20px;}
+        .video {
+            height: 100%;
+            max-height: 220px;
+            margin-bottom: 20px;
+        }
+    }
+
     .wpcf7-response-output {
-        background: @green;
-        padding: 10px 20px;
-        color: #fff;
+        padding: 15px;
+        margin:0 0 20px 0 !important;
+        border: 1px solid transparent;
+        border-radius: 4px;
         font-size: 16px;
         font-family: @roboto;
+        width: 100%;
+        text-align: center;
         .transition(all ease .5s);
 
         &.wpcf7-display-none {
@@ -560,12 +729,51 @@ article {
         }
 
         &.wpcf7-mail-sent-ok {
-            display: block;
+            color: #3c763d;
+            background-color: #dff0d8;
+            border-color: #d6e9c6;
+        }
+
+        &.wpcf7-validation-errors {
+            color: #8a6d3b;
+            background-color: #fcf8e3;
+            border-color: #faebcc;
+        }
+
+        &.wpcf7-spam-blocked {
+            color: #a94442;
+            background-color: #f2dede;
+            border-color: #ebccd1;
         }
 
     }
+
+    span.wpcf7-not-valid-tip {
+        color: orange;
+        font-size: 1em;
+        display: block;
+        position: absolute;
+        right: 20px;
+        top: 10px;
+    }
     .screen-reader-response {
         display: none;
+    }
+
+    .alignleft {
+        float: left;
+        margin: 0 10px 10px 0;
+    }
+
+    .alignright {
+        float: right;
+        margin: 0 0 10px 10px;
+    }
+
+    .size-medium {
+        width: 220px;
+        max-width: 100%;
+        height: auto;
     }
 }//article
 

@@ -7,6 +7,76 @@
 
 @imp : !important;
 // custom variables
+
+@media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+
+    h2 {font-size: 28px;}
+
+    header {
+
+        #main-nav {
+
+            #primary-nav {
+                ul {
+                    li {
+                        margin: 0 3px;
+                    }
+                }
+            }
+        }
+    }//header
+
+    article {
+        .boxes {
+            height: 406px;
+            overflow: hidden;
+
+            > a > img {max-height: 406px; height: 100%;}
+
+            .graph {
+                img {
+                    height: 100%;
+                    max-height: 278px;
+                }
+            }
+
+        }
+    }//footer
+
+    footer {
+        .footer-menu {
+            ul.sub-menu {
+                display: none;
+            }
+        }
+    }
+}
+
+//ipad and tablet
+@media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+    header {
+         #main-nav  {
+            display: none;
+        }
+
+        #mobile-header {
+            display: block;
+            visibility: visible;
+            margin-top: 26px;
+        }
+    }
+
+    footer {
+        .subscribe {
+            .input-group-btn {
+                width: 100%; padding: 0;
+            }
+        }
+
+        .subscribe .btn.subscribe {margin-left: 0px;}
+    }
+}
+
 @media (max-width: @screen-xs-max) {
 
     h1 {font-size: 26px;}
@@ -14,31 +84,63 @@
     h3 { font-size: 16px;}
     body , p , footer {font-size: 12px;}
 
+    header {
+        #primary-nav {display: none;}
+        #mobile-header {
+            display: block;
+            visibility: visible;
+            margin-top: 7px;
+            margin-right: 20px;
+        }
+    }
+
     article {
         .boxes {
             height: 312px;
+            overflow: hidden;
+
+            > a > img {
+                height: 100%;
+                max-height: 312px;
+            }
+
+            .details {
+                h2 {
+                    font-size: 20px;
+                }
+            }
         }
+
+        .register-page {
+            .form-group {
+                label {
+                    font-size: 14px;
+                    line-height:35px;
+                }
+            }
+
+            .wpcf7-recaptcha {
+                margin-bottom: 20px;
+            }
+        }
+
     }//article
 
     footer {
+        padding-top: 50px;
         .sitemap {
             a {font-size: 12px;}
+        }
+        .subscribe .btn.subscribe {margin-left: 5px;}
+
+        .copyright {
+            margin-top: 20px;
         }
     }
 
 }
 
 @media only screen and (max-width: 767px){
-
+    .subscribe .btn.subscribe {margin-left: 5px;}
 }//tablet
 
-
-//ipad and tablet
-@media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
-
-
-
-}
-@media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
-
-}

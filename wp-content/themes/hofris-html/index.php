@@ -1,6 +1,6 @@
 <?php
 /**
- * The main template file.
+ * Template Name: Homepage
  *
  * This is the most generic template file in a WordPress theme
  * and one of the two required files for a theme (the other being style.css).
@@ -22,140 +22,58 @@ get_header(); ?>
                         <?php include "slider.php"; ?>
                         <div class="home-boxes">
                             <div class="row">
-                                <div class="col-md-6">
+                                <?php
+                                // WP_Query arguments
+$args = array (
+    'post_type'              => array( 'post' ),
+    'post_status'            => array( 'publish' ),
+    'posts_per_page'         => '6',
+    'order'                  => 'DESC',
+    'orderby'                => 'date',
+);
+
+// The Query
+$querybox = new WP_Query( $args );
+
+// The Loop
+if ( $querybox->have_posts() ) {
+    while ( $querybox->have_posts() ) {
+        $querybox->the_post(); ?>
+                                <div class="col-md-6 col-sm-6 col-xs-6">
                                     <div class="boxes">
-                                        <a href="article.php">
+                                        <a href="<?php the_permalink(); ?>">
                                             <div class="graph">
-                                                <img src="img/dummy.jpg" alt="" class="img-responsive">
-                                            </div>
-                                            <div class="details">
-                                                <h3>profile</h3>
-                                                <h2>judul artikel</h2>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, consectetur adipisicing elit,</p>
+                                                <?php
+                                                $params = array( 'width' => 396, 'height' => 365, 'crop' => true );
+                                                $image = get_field('image');
+                                                $imageUrl = $image['url'];
+                                                ?>
+                                                <img src="<?php echo bfi_thumb( "$imageUrl", $params ); ?>" alt="" class="img-responsive">
                                             </div>
                                         </a>
+                                        <div class="details">
+                                            <ul class="list-unstyled list-inline"><?php the_category_hook(' '); ?></ul>
+                                            <a href="<?php the_permalink(); ?>">
+                                            <h2><?php echo wp_trim_words( get_the_title(), 7, '' ); ?></h2>
+                                                <!-- <p><?php echo wp_trim_words( get_the_content(), 10, '' ); ?></p> -->
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="boxes">
-                                        <a href="article.php">
-                                            <div class="graph">
-                                                <img src="img/dummy.jpg" alt="" class="img-responsive">
-                                            </div>
-                                            <div class="details">
-                                                <h3>profile</h3>
-                                                <h2>judul artikel</h2>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, consectetur adipisicing elit,</p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="boxes">
-                                        <a href="article.php">
-                                            <div class="graph">
-                                                <img src="img/dummy.jpg" alt="" class="img-responsive">
-                                            </div>
-                                            <div class="details">
-                                                <h3>profile</h3>
-                                                <h2>judul artikel</h2>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, consectetur adipisicing elit,</p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="boxes">
-                                        <a href="article.php">
-                                            <div class="graph">
-                                                <img src="img/dummy.jpg" alt="" class="img-responsive">
-                                            </div>
-                                            <div class="details">
-                                                <h3>profile</h3>
-                                                <h2>judul artikel</h2>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, consectetur adipisicing elit,</p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="boxes">
-                                        <a href="article.php">
-                                            <div class="graph">
-                                                <img src="img/dummy.jpg" alt="" class="img-responsive">
-                                            </div>
-                                            <div class="details">
-                                                <h3>profile</h3>
-                                                <h2>judul artikel</h2>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, consectetur adipisicing elit,</p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="boxes">
-                                        <a href="article.php">
-                                            <div class="graph">
-                                                <img src="img/dummy.jpg" alt="" class="img-responsive">
-                                            </div>
-                                            <div class="details">
-                                                <h3>profile</h3>
-                                                <h2>judul artikel</h2>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, consectetur adipisicing elit,</p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
+    <?php }
+} else {
+    // no posts found
+}
+
+// Restore original Post Data
+wp_reset_postdata(); ?>
                             </div>
                         </div>
                     </div>
                     <!-- right side -->
-                    <div class="col-md-4">
-                        <div class="box-sidebar">
-                            <div class="boxes">
-                                <a href="article.php">
-                                    <div class="graph">
-                                        <img src="img/dummy.jpg" alt="" class="img-responsive">
-                                    </div>
-                                    <div class="details">
-                                        <h3>profile</h3>
-                                        <h2>judul artikel</h2>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, consectetur adipisicing elit,</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="boxes">
-                                <a href="article.php">
-                                    <div class="graph">
-                                        <img src="img/dummy.jpg" alt="" class="img-responsive">
-                                    </div>
-                                    <div class="details">
-                                        <h3>profile</h3>
-                                        <h2>judul artikel</h2>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, consectetur adipisicing elit,</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="boxes">
-                                <a href="article.php">
-                                    <div class="graph">
-                                        <img src="img/dummy.jpg" alt="" class="img-responsive">
-                                    </div>
-                                    <div class="details">
-                                        <h3>profile</h3>
-                                        <h2>judul artikel</h2>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, consectetur adipisicing elit,</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="boxes">
-                                <img src="img/img-sosmed.jpg" alt="" class="img-responsive">
-                            </div>
-                        </div>
-                    </div>
+                    <?php get_sidebar(); ?>
                 </div>
             </div>
         </article>
 
-<?php get_sidebar(); ?>
 <?php get_footer(); ?>

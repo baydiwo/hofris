@@ -22,10 +22,6 @@ if ( $query->have_posts() ) {
             $cat3 = get_field('category_3');
             $cat4 = get_field('category_4');
             $cat5 = get_field('category_5');
-            // $category = get_field('category');
-            // $title = get_field('title');
-            // $text = get_field('text');
-            // $link = get_field('link');
         ?>
         <?php if ($image != null) { ?>
         <a href="<?php the_field('link'); ?>"><img src="<?php the_field('image') ?>" alt="<?php the_field('title'); ?>"

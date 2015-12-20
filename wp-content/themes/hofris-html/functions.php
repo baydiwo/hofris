@@ -44,7 +44,8 @@ function hofris_setup() {
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
-		'primary' => esc_html__( 'Primary Menu', 'hofris' ),
+        'primary' => esc_html__( 'Primary Menu', 'hofris' ),
+		'footer' => esc_html__( 'Footer Menu', 'hofris' ),
 	) );
 
 	/*
@@ -110,24 +111,6 @@ function hofris_widgets_init() {
 }
 add_action( 'widgets_init', 'hofris_widgets_init' );
 
-/**
- * Enqueue scripts and styles.
- */
-// function hofris_scripts() {
-// 	wp_enqueue_style( 'hofris-style', get_stylesheet_uri() );
-
-// 	wp_enqueue_script('bootstrap' , get_template_directory_uri() . '/js/bootstrap.min.js' , array() , '20151810' , true);
-
-// 	wp_enqueue_script( 'hofris-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
-
-// 	wp_enqueue_script( 'hofris-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
-
-// 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-// 		wp_enqueue_script( 'comment-reply' );
-// 	}
-// }
-// add_action( 'wp_enqueue_scripts', 'hofris_scripts' );
-
 require_once('inc/BFI_Thumb.php');
 
 
@@ -174,7 +157,7 @@ function the_breadcrumb() {
  */
 function category_pagination( $query ) {
     if ( $query->is_category() && $query->is_main_query() )
-        $query->set( 'posts_per_page', 2 );
+        $query->set( 'posts_per_page', 6 );
 }
 add_action( 'pre_get_posts', 'category_pagination' );
 
@@ -236,7 +219,7 @@ function get_the_category_list_hook( $separator = '', $parents='', $post_id = fa
 	        $categories = get_the_category( $post_id );
 	        if ( empty( $categories ) ) {
 	                /** This filter is documented in wp-includes/category-template.php */
-	                return apply_filters( 'the_category_hook', __( 'Uncategorized' ), $separator, $parents );
+	                return apply_filters( 'the_category_hook', __( ' ' ), $separator, $parents );
 	        }
 
        $rel = ( is_object( $wp_rewrite ) && $wp_rewrite->using_permalinks() ) ? 'rel="category tag"' : 'rel="category"';
@@ -301,3 +284,61 @@ function get_the_category_list_hook( $separator = '', $parents='', $post_id = fa
 	         */
 	        return apply_filters( 'the_category_hook', $thelist, $separator, $parents );
 	}
+
+//change sub menu class
+class My_Walker_Nav_Menu extends Walker_Nav_Menu {
+  function start_lvl(&$output, $depth) {
+    $indent = str_repeat("\t", $depth);
+    $output .= "\n$indent<ul class=\"dropdown-menu\">\n";
+  }
+}
+
+//stop redirect to wp-login if fail
+add_action( 'wp_login_failed', 'pu_login_failed' ); // hook failed login
+
+function pu_login_failed( $user ) {
+    // check what page the login attempt is coming from
+    $referrer = $_SERVER['HTTP_REFERER'];
+
+    // check that were not on the default login page
+    if ( !empty($referrer) && !strstr($referrer,'wp-login') && !strstr($referrer,'wp-admin') && $user!=null ) {
+        // make sure we don't already have a failed login attempt
+        if ( !strstr($referrer, '?login=failed' )) {
+            // Redirect to the login page and append a querystring of login failed
+            wp_redirect( $referrer . '?login=failed');
+        } else {
+            wp_redirect( $referrer );
+        }
+
+        exit;
+    }
+}
+
+add_action( 'authenticate', 'pu_blank_login');
+
+function pu_blank_login( $user ){
+    // check what page the login attempt is coming from
+    $referrer = $_SERVER['HTTP_REFERER'];
+
+    $error = false;
+
+    if($_POST['log'] == '' || $_POST['pwd'] == '')
+    {
+        $error = true;
+    }
+
+    // check that were not on the default login page
+    if ( !empty($referrer) && !strstr($referrer,'wp-login') && !strstr($referrer,'wp-admin') && $error ) {
+
+        // make sure we don't already have a failed login attempt
+        if ( !strstr($referrer, '?login=failed') ) {
+            // Redirect to the login page and append a querystring of login failed
+            wp_redirect( $referrer . '?login=failed' );
+        } else {
+            wp_redirect( $referrer );
+        }
+
+    exit;
+
+    }
+}

@@ -1,4 +1,4 @@
-<?php include "header.php"; ?>
+<?php get_header(); ?>
 
         <article class="category">
             <div class="container">
@@ -13,10 +13,10 @@
                     <?php while ( have_posts() ) : the_post(); ?>
                     <?php $image = get_field('image'); ?>
                     <li>
-                        <div class="col-lg-4">
+                        <div class="col-lg-4 col-md-4 col-xs-12">
                             <a href="<?php the_permalink(); ?>"><img src="<?php echo $image['url'] ?>" height="337" width="368" alt="" class="img-responsive"></a>
                         </div>
-                        <div class="col-lg-8">
+                        <div class="col-lg-8 col-md-8 col-xs-12">
                             <div class="description">
                                 <a href="<?php the_permalink(); ?>">
                                     <!-- <span class="cat-title">kesehatan</span> -->
@@ -53,4 +53,4 @@
             </div>
         </article>
 
-        <?php include "footer.php"; ?>
+        <?php get_footer(); ?>
